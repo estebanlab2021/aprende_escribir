@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <title>Pagina web hecha con Vue 3 | Esteban Arroyo</title>
+</head>
+
+<body>
+    <div id="app" class="container-fluid">
+        <header class="container">
+            <div class="row justify-content-center align-content-center bg-primary py-3">
+                <div class="col-md-8 col-sm-5">
+                    <h1 class="text-center text-light display-5 fw-bold">{{titulo}}</h1>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="row text-center bg-success py-2" style="height: 120px;">
+                <div class="col">
+                    <h3 class="text-light fw-bold fs-3">Escribe tu palabra</h3>
+                    <h3 class="display-5 text-light py-2">{{valor}}</h3>
+                </div>
+                <div class="col" v-show="boleano">
+                    <H3 class="display-4 text-warning fw-bold">{{resultado}}</h3>
+                </div>
+            </div>
+            <div class="row text-center" style="height: 50px;">
+                <div class="col">
+                    <h2>{{mensaje}}</h2>
+                </div>
+            </div>
+            <div class="row">
+                <button @click="generador" class="btn btn-info fw-bold fs-4">Generador de Palabras</button>
+            </div>
+            <div class="row text-center bg-warning justify-content-center py-3">
+                <div class="col">
+                    <button @click="agregarA" class="btn text-light btn-dark btn-outline-primary">A</button>
+                </div>
+                <div class="col">
+                    <button @click="agregarE" class="btn text-light btn-dark btn-outline-primary">E</button>
+                </div>
+                <div class="col">
+                    <button @click="agregarI" class="btn text-light btn-dark btn-outline-primary">I</button>
+                </div>
+                <div class="col">
+                    <button @click="agregarO" class="btn text-light btn-dark btn-outline-primary">O</button>
+                </div>
+                <div class="col">
+                    <button @click="agregarU" class="btn text-light btn-dark btn-outline-primary">U</button>
+                </div>
+                <div class="col">
+                    <button @click="agregarM" class="btn text-light btn-dark btn-outline-primary">M</button>
+                </div>
+                <div class="col">
+                    <button @click="agregarC" class="btn text-light btn-dark btn-outline-primary">C</button>
+                </div>
+                <div class="col">
+                    <button @click="agregarP" class="btn text-light btn-dark btn-outline-primary">P</button>
+                </div>
+                <div class="col">
+                    <button @click="agregarR" class="btn text-light btn-dark btn-outline-primary">R</button>
+                </div>
+                <div class="col">
+                    <button @click="agregarS" class="btn text-light btn-dark btn-outline-primary">S</button>
+                </div>
+                <div class="col">
+                    <button @click="agregarT" class="btn text-light btn-dark btn-outline-primary">T</button>
+                </div>
+                <div class="col">
+                    <button @click="agregarL" class="btn text-light btn-dark btn-outline-primary">L</button>
+                </div>
+                <div class="col">
+                    <button @click="agregarN" class="btn text-light btn-dark btn-outline-primary">N</button>
+                </div>
+
+            </div>
+            <div class="row text-center py-3">
+                <div class="col">
+                    <button @click="agregarEspacio" class="btn text-light btn-dark btn-outline-primary">Tabulador</button>
+                </div>
+                <div class="col">
+                    <button @click="felicitaciones" class="btn text-light btn-primary">Evalua Tu escritura</button>
+                </div>
+                <div class="col">
+                    <button @click="borrar" class="btn btn-danger">Borrar</button>
+                </div>
+            </div>
+
+        </div>
+
+
+        <footer class="container bg-dark py-3">
+            <div class="row justify-content-center align-content-center">
+                <div class="col-md-6 col-sm-3">
+                    <h5 class="text-center text-light fw-bold">{{subtitulo}}</h5>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const app = Vue.createApp({
+
+            data() {
+                return {
+                    titulo: 'Aprende a Leer y Escribir',
+                    subtitulo: '© 2021 | Esteban Arroyo',
+                    valor: " ",
+                    palabras: ['MAMA', 'PAPA', 'MESA', 'POTE', 'MANO', 'MONO', 'PALO', 'PIPA', 'PELOTA', 'SOPA', 'CASA', 'COMER', 'RATON', 'MISA', 'MASA', 'PATA', 'ROSA'],
+                    mensaje: "",
+                    resultado: "",
+                    boleano: false
+                }
+            },
+            methods: {
+                agregarA() {
+                    this.valor += "A";
+                },
+                agregarE() {
+                    this.valor += "E";
+                },
+                agregarI() {
+                    this.valor += "I";
+                },
+                agregarO() {
+                    this.valor += "O";
+                },
+                agregarU() {
+                    this.valor += "U";
+                },
+                agregarM() {
+                    this.valor += "M";
+                },
+                agregarP() {
+                    this.valor += "P";
+                },
+                agregarC() {
+                    this.valor += "C";
+                },
+                agregarR() {
+                    this.valor += "R";
+                },
+                agregarS() {
+                    this.valor += "S";
+                },
+                agregarT() {
+                    this.valor += "T";
+                },
+                agregarL() {
+                    this.valor += "L";
+                },
+                agregarN() {
+                    this.valor += "N";
+                },
+                agregarEspacio() {
+                    this.valor += " ";
+                },
+                borrar() {
+                    this.valor = " ";
+                    this.mensaje = " ";
+                    this.resultado = " ";
+                    this.boleano = false;
+                },
+                generador() {
+                    let texto = '';
+                    texto = Math.floor(Math.random() * this.palabras.length);
+                    //texto = Math.floor(Math.random() * 5);
+                    this.mensaje = this.palabras[texto];
+                    //this.mensaje = texto;
+                    this.boleano = false;
+                },
+                felicitaciones() {
+                    this.boleano = true;
+                    if (String(this.valor.trim()) === "") {
+                        this.resultado = "Tienes que Generar y escribir tu palabra!!"
+                    } else
+                    if (String(this.valor.trim()) == String(this.mensaje)) {
+                        this.resultado = "Lo Lograste!!";
+                    } else {
+                        this.resultado = "Sigue Trabajando";
+                    }
+                }
+
+            }
+
+        });
+        const appMontada = app.mount('#app');
+    </script>
+</body>
+
+</html>
