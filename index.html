@@ -29,9 +29,10 @@
                     <H3 class="display-4 text-warning fw-bold">{{resultado}}</h3>
                 </div>
             </div>
-            <div class="row text-center" style="height: 50px;">
+            <div class="row text-center" style="height: 60px;">
                 <div class="col">
-                    <h2>{{mensaje}}</h2>
+                    <h2>{{mensaje}} <img class="img-fluid" v-bind:src="imagenes" height="50" width="50" alt=""></span>
+                    </h2>
                 </div>
             </div>
             <div class="row">
@@ -77,12 +78,15 @@
                 <div class="col">
                     <button @click="agregarN" class="btn text-light btn-dark btn-outline-primary">N</button>
                 </div>
+                <div class="col">
+                    <button @click="agregarG" class="btn text-light btn-dark btn-outline-primary">G</button>
+                </div>
+                <div class="col">
+                    <button @click="agregarB" class="btn text-light btn-dark btn-outline-primary">B</button>
+                </div>
 
             </div>
             <div class="row text-center py-3">
-                <div class="col">
-                    <button @click="agregarEspacio" class="btn text-light btn-dark btn-outline-primary">Tabulador</button>
-                </div>
                 <div class="col">
                     <button @click="felicitaciones" class="btn text-light btn-primary">Evalua Tu escritura</button>
                 </div>
@@ -114,8 +118,70 @@
                     titulo: 'Aprende a Leer y Escribir',
                     subtitulo: '© 2021 | Esteban Arroyo',
                     valor: " ",
-                    palabras: ['MAMA', 'PAPA', 'MESA', 'POTE', 'MANO', 'MONO', 'PALO', 'PIPA', 'PELOTA', 'SOPA', 'CASA', 'COMER', 'RATON', 'MISA', 'MASA', 'PATA', 'ROSA'],
+                    //palabras: ['MAMA', 'PAPA', 'MESA', 'POTE', 'MANO', 'MONO', 'PALO', 'PIPA', 'PELOTA', 'SOPA', 'CASA', 'COMER', 'RATON', 'MISA', 'MASA', 'PATA', 'ROSA'],
+                    lista: [{
+                        palabras: 'MAMA',
+                        imagen: 'img/mama2.png'
+                    }, {
+                        palabras: 'PAPA',
+                        imagen: 'img/papa3.png'
+                    }, {
+                        palabras: 'MESA',
+                        imagen: 'img/mesa.png'
+                    }, {
+                        palabras: 'MONO',
+                        imagen: 'img/mono.png'
+                    }, {
+                        palabras: 'MANO',
+                        imagen: 'img/mano.png'
+                    }, {
+                        palabras: 'PALO',
+                        imagen: 'img/palo.png'
+                    }, {
+                        palabras: 'PIPA',
+                        imagen: 'img/pipa.png'
+                    }, {
+                        palabras: 'PELOTA',
+                        imagen: 'img/pelota.png'
+                    }, {
+                        palabras: 'GATO',
+                        imagen: 'img/gato.png'
+                    }, {
+                        palabras: 'BOTA',
+                        imagen: 'img/bota.png'
+                    }, {
+                        palabras: 'SOPA',
+                        imagen: 'img/sopa.png'
+                    }, {
+                        palabras: 'CASA',
+                        imagen: 'img/casa.png'
+                    }, {
+                        palabras: 'RATON',
+                        imagen: 'img/raton.png'
+                    }, {
+                        palabras: 'ROSA',
+                        imagen: 'img/rosa.png'
+                    }, {
+                        palabras: 'PIE',
+                        imagen: 'img/pie.png'
+                    }, {
+                        palabras: 'PERA',
+                        imagen: 'img/pera.png'
+                    }, {
+                        palabras: 'PATO',
+                        imagen: 'img/pato.png'
+                    }, {
+                        palabras: 'TASA',
+                        imagen: 'img/tasa.png'
+                    }, {
+                        palabras: 'SILLA',
+                        imagen: 'img/silla.png'
+                    }, {
+                        palabras: 'LUNA',
+                        imagen: 'img/luna.png'
+                    }],
                     mensaje: "",
+                    imagenes: "img/flecha.png",
                     resultado: "",
                     boleano: false
                 }
@@ -160,6 +226,12 @@
                 agregarN() {
                     this.valor += "N";
                 },
+                agregarG() {
+                    this.valor += "G";
+                },
+                agregarB() {
+                    this.valor += "B";
+                },
                 agregarEspacio() {
                     this.valor += " ";
                 },
@@ -167,14 +239,14 @@
                     this.valor = " ";
                     this.mensaje = " ";
                     this.resultado = " ";
+                    this.imagenes = "img/flecha.png";
                     this.boleano = false;
                 },
                 generador() {
                     let texto = '';
-                    texto = Math.floor(Math.random() * this.palabras.length);
-                    //texto = Math.floor(Math.random() * 5);
-                    this.mensaje = this.palabras[texto];
-                    //this.mensaje = texto;
+                    texto = Math.floor(Math.random() * this.lista.length);
+                    this.mensaje = this.lista[texto].palabras;
+                    this.imagenes = this.lista[texto].imagen;
                     this.boleano = false;
                 },
                 felicitaciones() {
